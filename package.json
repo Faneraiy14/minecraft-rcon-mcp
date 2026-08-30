@@ -1,0 +1,19 @@
+{
+    "name": "minecraft-rcon-mcp",
+    "version": "0.1.0",
+    "description": "MCP server that lets an AI assistant control a live Minecraft server (players, chat, teleport, weather, time, items) over RCON.",
+    "type": "module",
+    "bin": {
+        "minecraft-rcon-mcp": "./src/server.js"
+    },
+    "scripts": {
+        "start": "node src/server.js",
+        "test": "node --test test/config.mjs test/rcon.mjs test/tools.mjs test/transport.mjs"
+    },
+    "license": "MIT",
+    "author": "Faneraiy14",
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.30.0",
+        "zod": "^3.24.0"
+    }
+}

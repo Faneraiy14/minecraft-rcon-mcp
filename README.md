@@ -158,6 +158,16 @@ docker run -i --rm -e MC_RCON_HOST=<host> -e MC_RCON_PORT=25575 -e MC_RCON_PASSW
 The server speaks MCP over stdio, so keep `-i`. Needs: the `MC_RCON_*` variables of your server.
 In an MCP client config use `"command": "docker"` with the same arguments.
 
+## Startup timeout
+
+The server itself starts in about a second, but a client launching several MCP servers at once on a cold machine (right after boot) can hit Claude Code's default 30-second startup limit and mark it "failed". That limit belongs to the client, not to the server, so raise it there - in `~/.claude/settings.json`:
+
+```json
+{ "env": { "MCP_TIMEOUT": "120000" } }
+```
+
+(or start Claude Code as `MCP_TIMEOUT=120000 claude`). Takes effect in the next session.
+
 ## License
 
 MIT

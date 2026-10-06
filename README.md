@@ -148,6 +148,16 @@ have a Minecraft server sitting around, and this shouldn't block on one.
   `timeout_ms`, capped at 30s) so a server that stops responding mid-command
   doesn't hang the calling tool forever.
 
+## Docker
+
+```bash
+docker build -t minecraft-rcon-mcp .
+docker run -i --rm -e MC_RCON_HOST=<host> -e MC_RCON_PORT=25575 -e MC_RCON_PASSWORD=<password> minecraft-rcon-mcp
+```
+
+The server speaks MCP over stdio, so keep `-i`. Needs: the `MC_RCON_*` variables of your server.
+In an MCP client config use `"command": "docker"` with the same arguments.
+
 ## License
 
 MIT

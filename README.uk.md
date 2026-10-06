@@ -147,6 +147,16 @@ MCP-протокол (`StdioClientTransport` + `Client`), не лише прям
   через `timeout_ms`, максимум 30с) — сервер, що перестав відповідати
   посеред команди, не підвісить викликаючий інструмент назавжди.
 
+## Docker
+
+```bash
+docker build -t minecraft-rcon-mcp .
+docker run -i --rm -e MC_RCON_HOST=<host> -e MC_RCON_PORT=25575 -e MC_RCON_PASSWORD=<password> minecraft-rcon-mcp
+```
+
+Сервер працює з MCP через stdio, тож `-i` обов'язковий. Потрібно: змінні `MC_RCON_*` твого сервера.
+У конфігу MCP-клієнта: `"command": "docker"` з тими самими аргументами.
+
 ## Ліцензія
 
 MIT
